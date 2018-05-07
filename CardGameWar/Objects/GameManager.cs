@@ -46,13 +46,13 @@ namespace CardGameWar.Objects
 
         public void PlayTurn()
         {
-            List<Card> pool = new List<Card>();
+            Queue<Card> pool = new Queue<Card>();
 
-            var player1card = Player1.Deck.Pop();
-            var player2card = Player2.Deck.Pop();
+            var player1card = Player1.Deck.Dequeue();
+            var player2card = Player2.Deck.Dequeue();
 
-            pool.Add(player1card);
-            pool.Add(player2card);
+            pool.Enqueue(player1card);
+            pool.Enqueue(player2card);
 
             Console.WriteLine(Player1.Name + " plays " + player1card.DisplayName + ", " + Player2.Name + " plays " + player2card.DisplayName);
 
@@ -70,30 +70,30 @@ namespace CardGameWar.Objects
                     return;
                 }
                 
-                pool.Add(Player1.Deck.Pop());
-                pool.Add(Player1.Deck.Pop());
-                pool.Add(Player1.Deck.Pop());
-                pool.Add(Player2.Deck.Pop());
-                pool.Add(Player2.Deck.Pop());
-                pool.Add(Player2.Deck.Pop());
+                pool.Enqueue(Player1.Deck.Dequeue());
+                pool.Enqueue(Player1.Deck.Dequeue());
+                pool.Enqueue(Player1.Deck.Dequeue());
+                pool.Enqueue(Player2.Deck.Dequeue());
+                pool.Enqueue(Player2.Deck.Dequeue());
+                pool.Enqueue(Player2.Deck.Dequeue());
 
-                player1card = Player1.Deck.Pop();
-                player2card = Player2.Deck.Pop();
+                player1card = Player1.Deck.Dequeue();
+                player2card = Player2.Deck.Dequeue();
 
-                pool.Add(player1card);
-                pool.Add(player2card);
+                pool.Enqueue(player1card);
+                pool.Enqueue(player2card);
 
                 Console.WriteLine(Player1.Name + " plays " + player1card.DisplayName + ", " + Player2.Name + " plays " + player2card.DisplayName);
             }
 
             if(player1card.Value < player2card.Value)
             {
-                Player2.Deck.Append(pool);
+                Player2.Deck.Enqueue(pool);
                 Console.WriteLine(Player2.Name + " takes the hand!");
             }
             else
             {
-                Player1.Deck.Append(pool);
+                Player1.Deck.Enqueue(pool);
                 Console.WriteLine(Player1.Name + " takes the hand!");
             }
 

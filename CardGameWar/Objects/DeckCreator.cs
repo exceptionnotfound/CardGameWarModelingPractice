@@ -8,14 +8,14 @@ namespace CardGameWar.Objects
 {
     public static class DeckCreator
     { 
-        public static List<Card> CreateCards()
+        public static Queue<Card> CreateCards()
         {
-            List<Card> cards = new List<Card>();
+            Queue<Card> cards = new Queue<Card>();
             for(int i = 2; i <= 14; i++)
             {
                 foreach(Suit suit in Enum.GetValues(typeof(Suit)))
                 {
-                    cards.Add(new Card()
+                    cards.Enqueue(new Card()
                     {
                         Suit = suit,
                         Value = i,
@@ -26,22 +26,29 @@ namespace CardGameWar.Objects
             return Shuffle(cards);
         }
 
-        private static List<Card> Shuffle(List<Card> cards)
+        private static Queue<Card> Shuffle(Queue<Card> cards)
         {
             //Shuffle the existing cards using Fisher-Yates Modern
+            List<Card> transformedCards = cards.ToList();
             Random r = new Random(DateTime.Now.Millisecond);
-            for (int n = cards.Count - 1; n > 0; --n)
+            for (int n = transformedCards.Count - 1; n > 0; --n)
             {
                 //Step 2: Randomly pick a card which has not been shuffled
                 int k = r.Next(n + 1);
 
                 //Step 3: Swap the selected item with the last "unselected" card in the collection
-                Card temp = cards[n];
-                cards[n] = cards[k];
-                cards[k] = temp;
+                Card temp = transformedCards[n];
+                transformedCards[n] = transformedCards[k];
+                transformedCards[k] = temp;
             }
 
-            return cards;
+            Queue<Card> shuffledCards = new Queue<Card>();
+            foreach(var card in transformedCards)
+            {
+                shuffledCards.Enqueue(card);
+            }
+
+            return shuffledCards;
         }
 
         private static string GetShortName(int value, Suit suit)

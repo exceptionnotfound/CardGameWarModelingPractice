@@ -9,23 +9,11 @@ namespace CardGameWar
 {
     public static class Extensions
     {
-        public static Card Pop(this List<Card> cards)
-        {
-            var card = cards.First();
-            cards.RemoveAt(0);
-            return card;
-        }
-
-        public static void Push(this List<Card> cards, Card card)
-        {
-            cards.Insert(0, card);
-        }
-
-        public static void Append(this List<Card> cards, List<Card> newCards)
+        public static void Enqueue(this Queue<Card> cards, Queue<Card> newCards)
         {
             foreach(var card in newCards)
             {
-                cards.Insert(cards.Count, card);
+                cards.Enqueue(card);
             }
         }
     }

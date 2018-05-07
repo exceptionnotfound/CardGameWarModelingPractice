@@ -9,7 +9,7 @@ namespace CardGameWar.Objects
     public class Player
     {
         public string Name { get; set; }
-        public List<Card> Deck { get; set; }
+        public Queue<Card> Deck { get; set; }
 
         public Player() { }
 
@@ -18,25 +18,27 @@ namespace CardGameWar.Objects
             Name = name;
         }
 
-        public List<Card> Deal(List<Card> cards)
+        public Queue<Card> Deal(Queue<Card> cards)
         {
-            List<Card> player1cards = new List<Card>();
-            List<Card> player2cards = new List<Card>();
+            Queue<Card> player1cards = new Queue<Card>();
+            Queue<Card> player2cards = new Queue<Card>();
 
-            for(int i = 0; i < cards.Count; i++)
+            int counter = 2;
+            while(cards.Any())
             {
-                if(i % 2 == 0) //Card etiquette says the player who is NOT the dealer gets first card
+                if(counter % 2 == 0) //Card etiquette says the player who is NOT the dealer gets first card
                 {
-                    player2cards.Push(cards[i]);
+                    player2cards.Enqueue(cards.Dequeue());
                 }
                 else
                 {
-                    player1cards.Push(cards[i]);
+                    player1cards.Enqueue(cards.Dequeue());
                 }
+                counter++;
             }
 
-            Deck = player2cards;
-            return player1cards;
+            Deck = player1cards;
+            return player2cards;
         }
     }
 }
