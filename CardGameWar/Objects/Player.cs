@@ -25,7 +25,7 @@ namespace CardGameWar.Objects
 
             for(int i = 0; i < cards.Count; i++)
             {
-                if(i % 2 == 0)
+                if(i % 2 == 0) //Card etiquette says the player who is NOT the dealer gets first card
                 {
                     player2cards.Push(cards[i]);
                 }

@@ -28,14 +28,14 @@ namespace CardGameWar.Objects
 
         private static List<Card> Shuffle(List<Card> cards)
         {
-            //First, shuffle the existing cards using Fisher-Yates
+            //Shuffle the existing cards using Fisher-Yates Modern
             Random r = new Random(DateTime.Now.Millisecond);
             for (int n = cards.Count - 1; n > 0; --n)
             {
-                //Step 2: Randomly pick an item which has not been shuffled
+                //Step 2: Randomly pick a card which has not been shuffled
                 int k = r.Next(n + 1);
 
-                //Step 3: Swap the selected item with the last "unstruck" letter in the collection
+                //Step 3: Swap the selected item with the last "unselected" card in the collection
                 Card temp = cards[n];
                 cards[n] = cards[k];
                 cards[k] = temp;

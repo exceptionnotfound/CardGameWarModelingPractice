@@ -80,6 +80,9 @@ namespace CardGameWar.Objects
                 player1card = Player1.Deck.Pop();
                 player2card = Player2.Deck.Pop();
 
+                pool.Add(player1card);
+                pool.Add(player2card);
+
                 Console.WriteLine(Player1.Name + " plays " + player1card.DisplayName + ", " + Player2.Name + " plays " + player2card.DisplayName);
             }
 
