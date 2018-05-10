@@ -4,4 +4,8 @@ In a series of posts on my blog, I do "modeling practice" by taking common board
 
 This is the latest effort: a model of the [card game WAR](https://www.bicyclecards.com/how-to-play/war/).
 
-You can read more about this project at my blog [Exception Not Found](https://exceptionnotfound.net/modeling-the-card-game-war-in-c-part-1-background-and-rules/#disqus_thread).
+Blog posts:
+
+1. [Part 1: Background and Rules](https://exceptionnotfound.net/modeling-the-card-game-war-in-c-part-1-background-and-rules/)
+2. [Part 2: The Code](https://exceptionnotfound.net/modeling-the-card-game-war-in-c-part-2-the-code/)
+3. [Part 3: Running the App](https://exceptionnotfound.net/modeling-the-card-game-war-in-c-part-3-running-the-app/)
